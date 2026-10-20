@@ -51,26 +51,17 @@ body[data-lang=zh] .cover h1{letter-spacing:normal;line-height:1.25}
 .fonts div b{display:block;font-size:22px;font-weight:700}
 .fonts div span{font-size:12px;color:var(--se)}
 .cnf{font-family:"Alibaba PuHuiTi",sans-serif}
-/* title: coach window */
-.tCW .ph{background-image:url(frames/coach_window.jpg);background-size:112% auto;background-position:0% 50%;animation:cwpan 10s linear infinite alternate}
-@keyframes cwpan{to{background-position:100% 50%}}
-.tCW .tint{position:absolute;inset:0;background:linear-gradient(90deg,rgba(19,0,45,.45),rgba(19,0,45,0) 60%)}
-.tCW .tt{position:absolute;left:10%;top:34%}
-.tCW h5{font-size:5.85cqw;font-weight:800;line-height:.94;letter-spacing:-.06cqw;text-transform:uppercase;color:rgba(255,255,255,.94)}
-.tCW p{font-size:1.55cqw;font-weight:600;margin-top:1.15cqw;line-height:1.3}
-.tCW .lg{right:4cqw;bottom:3.75cqw;height:1.9cqw}
-.tCW.go h5{animation:cwIn .6s .4s ease-out both}@keyframes cwIn{from{opacity:0;filter:blur(.6cqw)}}
-.tCW.go p{animation:rise .4s .9s ease-out both}.tCW.go .lg{animation:fade .4s 1.2s both}
-/* caption: slate corner */
-.B6 .sc .scrim{background:linear-gradient(to top,rgba(19,0,45,.55),rgba(19,0,45,0) 40%)}
-.B6 .el{position:absolute;left:5cqw;bottom:5cqw;padding:1.4cqw 0 0 1.7cqw;color:#fff}
-.B6 .br{position:absolute;left:0;top:0;width:2.3cqw;height:100%;border-left:.104cqw solid #fff;border-top:.104cqw solid #fff}
-.B6 b{display:flex;gap:.6cqw;align-items:center;font-size:3.6cqw;font-weight:700;line-height:1.1;letter-spacing:-.025cqw}
-.B6 b.x{font-size:6.5cqw;font-weight:800;line-height:1;letter-spacing:-.1cqw}
-.B6 span{display:block;font-size:1.8cqw;font-weight:400;opacity:.9;margin-top:.4cqw;line-height:1.35}
-.B6 small{display:block;font-size:1.15cqw;font-weight:600;letter-spacing:.16cqw;text-transform:uppercase;color:#FF0051;margin-top:.8cqw}
-.B6 .fl{width:2.9cqw;height:2.9cqw;border-width:.104cqw}
-.B6 .fls{gap:.7cqw}
+/* caption: slate corner, matched to the generated design */
+.B6 .sc .scrim{background:linear-gradient(to top,rgba(19,0,45,.4),rgba(19,0,45,0) 40%)}
+.B6 .el{position:absolute;left:5.16cqw;bottom:3.6cqw;padding:2.25cqw 0 2.15cqw 2.24cqw;color:#fff}
+.B6 .br{position:absolute;left:0;top:0;bottom:0;width:3.28cqw;border:.21cqw solid #fff;border-right:none;border-bottom:none}
+.B6 .br::after{content:'';position:absolute;left:-.21cqw;bottom:0;width:5.47cqw;border-bottom:.21cqw solid #fff}
+.B6 b{display:flex;gap:.8cqw;align-items:center;font-size:3.9cqw;font-weight:700;line-height:1;letter-spacing:0}
+.B6 b.x{font-size:6.7cqw;font-weight:800;letter-spacing:-.1cqw}
+.B6 span{display:block;font-size:2.81cqw;font-weight:400;line-height:1.1;margin-top:.45cqw;opacity:1}
+.B6 small{display:block;font-size:1.46cqw;font-weight:600;letter-spacing:.088cqw;text-transform:uppercase;color:#FF0051;margin-top:.7cqw;line-height:1.2}
+.B6 .fl{width:3.6cqw;height:3.6cqw;border-width:.16cqw}
+.B6 .fls{gap:.8cqw}
 .B6 .sc.on .br{animation:brIn .25s ease-out both}@keyframes brIn{from{clip-path:inset(0 100% 100% 0)}}
 .B6 .sc.on .el>*:not(.br){animation:rise .35s ease-out both}
 .B6 .sc.on .el>*:nth-child(3){animation-delay:.08s}.B6 .sc.on .el>*:nth-child(4){animation-delay:.16s}
@@ -123,41 +114,39 @@ const cover=()=>`<section class="sl cover" id="d0"><div class="ey">SOURCING TRIP
 
 /* ---------- 01 title ---------- */
 const title=()=>`<section class="sl" id="d1"><div class="slh"><span class="no">01</span><h2>${Z('Title card: Coach window','片名卡：车窗')}</h2></div>
- <p class="dec">${Z('The title sits on the coach window while Guangzhou slides past behind the glass. It lands on the music hit right after the hook montage. The AI image is the composition reference only: build the type in After Effects with Poppins over real coach-window footage, as in the live version. The film is called Sourcing Trip.','片名贴在大巴车窗玻璃上，广州的城市在玻璃后面掠过。在开场钩子结束后的音乐重拍上出现。AI 图只作为构图参考：请在 After Effects 里用 Poppins 字体，在真实的车窗素材上制作文字，参照实时版本。片名为 Sourcing Trip。')}</p>
- <div class="grid"><div class="stk">
-  <div>${stageLbl('Live build on trip footage','真实素材上的实时版本',1)}<div class="stage tCW" data-t><div class="ph"></div><div class="tint"></div><div class="tt"><h5>Sourcing<br/>Trip</h5><p>Guangdong, October 2026</p></div><img class="lg" src="wf/wf_logo_en_hrz_rev.svg" alt=""/></div></div>
-  <div>${stageLbl('Composition reference (AI)','构图参考（AI 生成）')}<img class="ref" src="higgsfield/title_2.jpg" alt=""/></div>
- </div><div>${rows([
-  R('Title','片名','Poppins ExtraBold','112 px','800','LH 0.94 · −1%',col(W,'94%'),'Uppercase, two lines: SOURCING / TRIP. Left edge 192 px (10%), top of first line at 34% of height.','全大写，两行：SOURCING / TRIP。左边距 192 px（10%），第一行顶部在画面高度 34% 处。'),
-  R('Subtitle','副标题','Poppins SemiBold','30 px','600','LH 1.3 · 0',col(W),'Guangdong, October 2026. 22 px below the title, same left edge.','Guangdong, October 2026。在片名下方 22 px，左对齐。'),
-  R('Glass tint','玻璃暗部','—','—','—','—',col('#13002D','45% → 0'),'Left-to-right gradient over the full frame, fading out at 60% of the width. Keeps white type readable on bright sky.','从左到右的渐变，覆盖全画面，到画面宽度 60% 处消失。让白字在亮天空上也清楚。'),
-  R('Logo','标志','SVG','36 px tall','—','—',col(W),'WorldFirst reverse lockup file. Right 77 px, bottom 72 px.','万里汇反白标志文件。距右 77 px，距底 72 px。'),
+ <p class="dec">${Z('This generated frame is the title card design: the title painted on the coach window while Guangzhou slides past behind the glass. Rebuild it over real coach-window footage with the words changed to SOURCING TRIP; keep everything else as it is. It lands on the music hit right after the hook montage.','这张生成图就是片名卡的设计：片名印在大巴车窗玻璃上，广州的城市在玻璃后面掠过。请在真实的车窗素材上按这张图还原，只把文字改成 SOURCING TRIP，其他保持不变。在开场钩子结束后的音乐重拍上出现。')}</p>
+ <div class="grid"><div class="stk one"><div>${stageLbl('Title card design (generated)','片名卡设计（生成图）')}<img class="ref" src="higgsfield/title_2.jpg" alt=""/></div></div><div>${rows([
+  R('Words','文字','—','—','—','—','—','Line 1: SOURCING. Line 2: TRIP. Subline unchanged: A WorldFirst China Sourcing Trip. "They Believe Their Eyes" is not used.','第一行：SOURCING。第二行：TRIP。副标题不变：A WorldFirst China Sourcing Trip。不再使用 "They Believe Their Eyes"。'),
+  R('Title, line 1','片名第一行','Poppins ExtraBold','184 px','800','cap height 129 px',col(W,'95%'),'Uppercase. Left edge 177 px (9.2%). Cap top at 517 px (48% of height).','全大写。左边距 177 px（9.2%）。字母顶部在 517 px（画面高度 48%）。','大写字母高 129 px'),
+  R('Title, line 2','片名第二行','Poppins ExtraBold','130 px','800','cap height 91 px',col(W,'95%'),'Uppercase, same left edge. Baseline at 752 px (70% of height).','全大写，左对齐。基线在 752 px（画面高度 70%）。','大写字母高 91 px'),
+  R('Subline','副标题','Poppins SemiBold','47 px','600','0',col(W,'95%'),'Same left edge, baseline at 886 px (82% of height) at its left end.','左对齐，左端基线在 886 px（画面高度 82%）。'),
+  R('Glass plane','玻璃平面','—','—','—','—','—','The type sits on the window glass and follows its angle: the title rises about 2° left to right, the subline about 7°. Matte, slightly see-through, no shadow, no glow.','文字贴在车窗玻璃上，跟随玻璃角度：片名从左到右上扬约 2°，副标题约 7°。哑光，略透明，不加阴影，不发光。'),
+  R('Logo','标志','—','—','—','—','—','None on this card, as in the design. The brand is on the coach and on the end card.','这张卡上不放标志，与设计一致。品牌出现在大巴车身和片尾卡上。'),
   {g:['Motion','动效']},
   R('Plate','背景','—','—','—','—','—','Real coach-window footage with the city moving (Day 1, Guangzhou to Shunde). No zoom.','真实车窗素材，城市在后面移动（第一天，广州到顺德）。不推拉镜头。'),
-  R('In','入场','—','—','—','—','—','Title at 0.4 s: 600 ms fade with focus from 12 px blur to sharp. Subtitle at 0.9 s: 400 ms, rises 12 px. Logo at 1.2 s: 400 ms fade.','片名 0.4 秒入场：600 毫秒淡入，同时从 12 px 模糊对焦到清晰。副标题 0.9 秒入场：400 毫秒，上移 12 px。标志 1.2 秒入场：400 毫秒淡入。'),
-  R('Hold and out','停留与出场','—','—','—','—','—','Hold 3 s. Everything out together in 400 ms fade, then cut to Joshua at the coach.','停留 3 秒。所有元素一起 400 毫秒淡出，然后切到大巴旁的 Joshua。')])}
-  <div class="note">${Z('The lettering in the AI reference is blurred on purpose: use it for the composition only, not for the words or the font.','AI 参考图里的文字已刻意模糊：只参考构图，不参考文字内容和字体。')}</div></div></div></section>`;
+  R('In','入场','—','—','—','—','—','Title at 0.4 s: 600 ms fade with focus from 12 px blur to sharp. Subline at 0.9 s: 400 ms fade.','片名 0.4 秒入场：600 毫秒淡入，同时从 12 px 模糊对焦到清晰。副标题 0.9 秒入场：400 毫秒淡入。'),
+  R('Hold and out','停留与出场','—','—','—','—','—','Hold 3 s. Everything out together in 400 ms fade, then cut to Joshua at the coach.','停留 3 秒。所有元素一起 400 毫秒淡出，然后切到大巴旁的 Joshua。')])}</div></div></section>`;
 
 /* ---------- 02 captions ---------- */
 const CAPS=[
  ['joshua_bus',`<div class="el"><i class="br"></i><div class="fls">${FL5.map(c=>fl(c)).join('')}</div><span>14 importers · five countries</span><small>12.10.2026 · Guangzhou</small></div>`],
- ['han',`<div class="el"><i class="br"></i><b>Han ${fl('au')}</b><span>Amazon growth consultant</span><small>12.10.2026 · Guangzhou</small></div>`],
+ ['han',`<div class="el"><i class="br"></i><b>Han</b><span>Amazon growth consultant · Australia</span><small>12.10.2026 · Guangzhou</small></div>`],
  ['tower',`<div class="el"><i class="br"></i><b>Rongde</b><span>Kettles and lunch boxes · Zhongshan</span><small>13.10.2026 · Day 2</small></div>`],
  ['container',`<div class="el"><i class="br"></i><b class="x">20</b><span>containers a day · Weijin</span><small>13.10.2026 · Zhongshan</small></div>`]];
 const caps=()=>`<section class="sl" id="d2"><div class="slh"><span class="no">02</span><h2>${Z('Caption system: Slate corner','字幕系统：场记角标')}</h2></div>
- <p class="dec">${Z('One caption style for countries, names, places and numbers, start to end. A thin white corner bracket, the main line, a detail line, and a red date-and-place line like a documentary slate. The live version cycles through all four uses. Countries are flags, never typed, so the reference\'s "Australia" becomes a flag.','国家、人名、地点、数字全片只用一种字幕样式：一个细白角框、主信息、说明，再加一行像纪录片场记一样的红色日期地点。左侧实时版本依次演示四种用法。国家只用国旗，不打字，所以参考图里的 "Australia" 改成国旗。')}</p>
+ <p class="dec">${Z('Built to match the generated design exactly: a thin white bracket with a short top arm and a longer bottom arm, the name in bold, the detail line large and light, and a red date-and-place line. The same system covers countries, names, places and numbers; the live version cycles through all four.','完全按照生成图还原：细白色括号形角框（上边短、下边长），粗体人名，较大的细体说明行，再加一行红色日期地点。国家、人名、地点、数字都用这一套；左侧实时版本依次演示四种用法。')}</p>
  <div class="grid"><div class="stk">
   <div>${stageLbl('Live build: countries, name, place, number','实时版本：国家、人名、地点、数字',1)}<div class="stage cy B6">${CAPS.map((c,j)=>`<div class="sc ${j?'':'on'}" style="background-image:url(frames/${c[0]}.jpg)" data-d="3000"><div class="scrim"></div>${c[1]}</div>`).join('')}</div></div>
-  <div>${stageLbl('Look reference (AI)','样式参考（AI 生成）')}<img class="ref" src="higgsfield/caps_5.jpg" alt=""/></div>
+  <div>${stageLbl('Generated design','生成图设计')}<img class="ref" src="higgsfield/caps_5.jpg" alt=""/></div>
  </div><div>${rows([
-  R('Corner bracket','角框','—','top arm 44 px','2 px line','—',col(W),'Top arm 44 px; left arm runs the full height of the block.','上边 44 px；左边与整组文字等高。'),
-  R('Main line','主信息','Poppins Bold','69 px','700','LH 1.1 · −0.5%',col(W),'Name or place. Flag after a name: 56 px circle, 2 px white ring, 12 px gap.','人名或地点。人名后接国旗：56 px 圆形，2 px 白边，间距 12 px。'),
-  R('Number','数字','Poppins ExtraBold','125 px','800','LH 1.0 · −2%',col(W),'Takes the place of the main line for figures.','数字类信息用它替代主信息行。'),
-  R('Detail line','说明','Poppins Regular','35 px','400','LH 1.35 · 0',col(W,'90%'),'Role, product or what the number means. 8 px below the main line.','身份、产品或数字含义。在主信息下方 8 px。'),
-  R('Slate line','日期地点','Poppins SemiBold','22 px','600','+14% · uppercase',col(RED),'DD.MM.YYYY · PLACE or DAY n. 15 px below the detail line.','格式：日.月.年 · 地点 或 DAY n。在说明下方 15 px。','+14% · 大写'),
-  R('Flags row','国旗行','—','56 px','—','gap 13 px',col(W,'ring 2 px'),'Replaces the main line when the countries are the point (Joshua\'s open).','当重点是国家时（Joshua 开场）替代主信息行。'),
-  R('Block','位置','—','—','—','—','—','Left 96 px, bottom 96 px. Text starts 33 px right of the bracket and 27 px below its top.','距左 96 px，距底 96 px。文字距角框左边 33 px，距角框顶部 27 px。'),
-  R('Scrim','底部暗部','—','bottom 40%','—','—',col('#13002D','55% → 0'),'Only while a caption is on screen.','只在字幕出现时加。'),
+  R('Bracket','角框','—','top arm 63 px · bottom arm 105 px','4 px line','—',col(W),'Left side runs the full height of the block. Left edge 99 px from the frame edge.','左边与整组文字等高。距画面左边 99 px。','上边 63 px · 下边 105 px'),
+  R('Name / place','人名 / 地点','Poppins Bold','75 px','700','LH 1.0 · 0',col(W),'Starts 43 px right of the bracket and 43 px below its top.','距角框左边 43 px，距角框顶部 43 px。'),
+  R('Detail line','说明','Poppins Regular','54 px','400','LH 1.1 · 0',col(W),'Role, product or what the number means; country written out as in the design. 9 px below the name.','身份、产品或数字含义；国家名按设计直接写出。在人名下方 9 px。'),
+  R('Slate line','日期地点','Poppins SemiBold','28 px','600','+6% · uppercase',col(RED),'DD.MM.YYYY · PLACE or DAY n. 13 px below the detail line.','格式：日.月.年 · 地点 或 DAY n。在说明下方 13 px。','+6% · 大写'),
+  R('Number','数字','Poppins ExtraBold','129 px','800','LH 1.0 · −1%',col(W),'Takes the place of the name line for figures.','数字类信息用它替代人名行。'),
+  R('Flags row','国旗行','—','69 px','—','gap 15 px',col(W,'ring 3 px'),'Takes the place of the name line when the countries are the point (Joshua\'s open).','当重点是国家时（Joshua 开场）替代人名行。'),
+  R('Block','位置','—','—','—','—','—','Bracket bottom 69 px above the frame bottom; 41 px between the slate line and the bottom arm.','角框下边距画面底部 69 px；日期地点行到角框下边 41 px。'),
+  R('Scrim','底部暗部','—','bottom 40%','—','—',col('#13002D','40% → 0'),'Only on bright backgrounds.','只在背景较亮时加。'),
   {g:['Motion','动效']},
   R('In','入场','—','—','—','—','—','Bracket draws in 250 ms, then the lines rise 12 px and fade in over 350 ms, 80 ms apart.','角框 250 毫秒画出，然后各行文字上移 12 px 并淡入，350 毫秒，每行间隔 80 毫秒。'),
   R('Hold and out','停留与出场','—','—','—','—','—','Hold at least 2 s. Out: 200 ms fade, all lines together.','至少停留 2 秒。出场：200 毫秒一起淡出。')])}</div></div></section>`;
@@ -209,31 +198,29 @@ const atlas=()=>`<section class="sl" id="d4"><div class="slh"><span class="no">0
   R('Move','运动','—','—','—','—','—','Frames Guangzhou to Zhongshan; slow 5% push over the shot.','框住广州到中山；整段缓慢推进 5%。')])}</div></div></section>`;
 
 /* ---------- 05 motion ---------- */
-const motion=()=>`<section class="sl" id="d5"><div class="slh"><span class="no">05</span><h2>${Z('Map motion: Photo pins, plus Day counter','地图动效：照片图钉，加天数里程')}</h2></div>
- <p class="dec">${Z('Between stops the map runs on the light ground. As the coach reaches each stop, a frame from that stop pops from the pin and shrinks to a thumbnail, so by the end the map is the film\'s index. The Day counter uses the same light style and is an extra version for the legs between days.','各站之间的地图用浅色底图。大巴每到一站，从定位点弹出那一站的画面，再缩成小图留在地图上，到最后整张地图就是影片的目录。天数里程用同样的浅色风格，作为每天之间路段的额外版本。')}</p>
- <div class="grid"><div class="stk">
-  <div>${stageLbl('Photo pins','照片图钉',1)}<div class="stage"><canvas data-map="mo:photo"></canvas><div class="attr dk">Map data © OpenStreetMap contributors</div></div></div>
-  <div>${stageLbl('Day counter (light)','天数里程（浅色）',1)}<div class="stage"><canvas data-map="mo:dayslight"></canvas><div class="hud hudN lt"><b data-hud="day">Day 1</b><span><em data-hud="km">0</em> km · stop <em data-hud="stop">1</em> of 11</span></div><div class="days lt">${[1,2,3,4].map(d=>`<div data-dd="${d}"><i><u></u></i>DAY ${d}</div>`).join('')}</div><div class="attr dk" style="bottom:auto;top:1.6cqw">Map data © OpenStreetMap contributors</div></div></div>
+const motion=()=>`<section class="sl" id="d5"><div class="slh"><span class="no">05</span><h2>${Z('Map motion: Day route','地图动效：天数路线')}</h2></div>
+ <p class="dec">${Z('One map for every leg, on the light ground. The route builds day by day while the coach drives it. Each point gets its name and what it is as the coach arrives; factories are always WorldFirst Red, every other stop is dark purple. A strip at the bottom fills Day 1 to Day 4.','所有路段只用这一种地图，浅色底图。大巴开到哪里，路线就按天画到哪里。大巴到达每个点时出现它的名称和说明；工厂一律用万里汇红，其他站点一律用深紫。底部进度条从第一天走到第四天。')}</p>
+ <div class="grid"><div class="stk one">
+  <div>${stageLbl('Day route (light)','天数路线（浅色）',1)}<div class="stage"><canvas data-map="mo:dayslight"></canvas><div class="hud hudN lt"><b data-hud="day">Day 1</b></div><div class="days lt">${[1,2,3,4].map(d=>`<div data-dd="${d}"><i><u></u></i>DAY ${d}</div>`).join('')}</div><div class="attr dk" style="bottom:auto;top:1.6cqw">Map data © OpenStreetMap contributors</div></div></div>
  </div><div>${rows([
   {g:['Light ground','浅色底图']},
   R('Water · land','水面 · 陆地','—','—','—','—',`${col('#ECEDEE')} · ${col(W)}`,'Same shapes as the atlas, without the grid.','与地图册形状相同，没有经纬网。'),
   R('Motorways','高速公路','—','1.4 px','—','—',col(INK,'17%'),'OSM motorways.','OSM 高速公路。'),
   R('City names','城市名','Poppins SemiBold','19 px','600','+10% · uppercase',col(INK,'45%'),'As on the atlas, lighter.','与地图册相同，颜色更浅。','+10% · 大写'),
-  {g:['Photo pins','照片图钉']},
-  R('Route','路线','—','6.5 px','—','round caps',col(RED),'Draws stop to stop, ease in and out.','一站一站画出，缓入缓出。','圆头'),
+  {g:['Points','站点']},
+  R('Factory pin','工厂站点','—','r 10 px','—','ring 3.8 px',col(RED),'Viomi, Stelang, Rongde, Weijin, Vision. Always this colour.','Viomi、Stelang、Rongde、Weijin、Vision。始终用这个颜色。','描边 3.8 px'),
+  R('Other stop pin','其他站点','—','r 10 px','—','ring 3.8 px',col('#13002D'),'Hotel, welcome dinner, yum cha, 1688 selection centre, Alibaba Center, Canton Fair. Hotel pin r 12.5 px.','酒店、欢迎晚宴、早茶、1688 选品中心、阿里巴巴中心、广交会。酒店站点半径 12.5 px。','描边 3.8 px'),
+  R('Point name','站点名','Poppins SemiBold','22 px','600','0',col(INK),'Next to the pin, on the side away from the route. In the Guangzhou cluster, names sit out on a 2.3 px leader line, #1F2323 50%.','放在站点旁、远离路线的一侧。广州几个站点距离很近，名称用引线拉开，引线 2.3 px，#1F2323 50%。'),
+  R('What it is','说明','Poppins Regular','15 px','400','0',col('#484F56'),'One short line under the name: Water purifiers, Coffee machines, Kettles and lunch boxes, Ovens and air fryers, Baby appliances, Beauty and cosmetics, Workshop, Pazhou.','名称下方一行简短说明：Water purifiers、Coffee machines、Kettles, lunch boxes、Ovens, air fryers、Baby appliances、Beauty and cosmetics、Workshop、Pazhou。'),
+  {g:['Route and coach','路线与大巴']},
+  R('Route by day','按天的路线','—','7.7 / 4.6 px','—','round caps',`${col(RED)} / ${col(INK,'35%')}`,'Today\'s route in red; earlier days in grey.','当天路线红色；之前几天灰色。','圆头'),
   R('Coach','大巴','—','65 × 27 px','—','outline 3.5 px',col(RED),'White outline and windows, faces the direction of travel.','白色描边和车窗，车头朝行驶方向。','描边 3.5 px'),
-  R('Photo card','照片卡','—','324 px','—','frame 15 px',col(W),'Square, 30% of frame height, radius 12 px, frame from that stop. Name strip 55 px tall.','正方形，画面高度 30%，圆角 12 px，放该站画面。下方名称条高 55 px。','边框 15 px'),
-  R('Card name','卡片站名','Poppins SemiBold','24 px','600','0',col(INK),'Left-aligned in the name strip.','在名称条里左对齐。'),
-  R('Leader line','引线','—','2.3 px','—','—',col(INK,'50%'),'From the pin to the card.','从站点连到照片卡。'),
-  R('Thumbnail','缩略图','—','162 px','—','frame 7 px',col(W),'15% of height; stays on the map after the card shrinks.','画面高度 15%；照片卡缩小后留在地图上。','边框 7 px'),
-  R('Motion','动效','—','—','—','—','—','Card pops in 300 ms to 106%, settles in 120 ms, holds 700 ms, shrinks to the thumbnail in 400 ms. The next leg starts as it shrinks.','照片卡 300 毫秒弹出到 106%，120 毫秒回到 100%，停留 700 毫秒，400 毫秒缩成缩略图。缩小时下一段路线开始。'),
-  {g:['Day counter (light)','天数里程（浅色）']},
-  R('Day','天数','Poppins ExtraBold','81 px','800','−3.5%',col(INK),'Top-left, 69 px in, 65 px down.','左上角，距左 69 px，距上 65 px。'),
-  R('Counter line','计数行','Poppins Medium','25 px','500','tabular figures',col('#484F56'),'Format: 64 km · stop 4 of 11, 12 px under the day.','格式：64 km · stop 4 of 11，在天数下方 12 px。','等宽数字'),
-  R('Counter numbers','计数数字','Poppins Bold','42 px','700','tabular figures',col(INK),'Count up live as the coach moves.','随大巴移动实时增加。','等宽数字'),
+  {g:['Day label and strip','天数与进度条']},
+  R('Day','天数','Poppins ExtraBold','81 px','800','−3.5%',col(INK),'Top-left, 69 px in, 65 px down. No kilometre or stop counters.','左上角，距左 69 px，距上 65 px。不显示公里数和站数。'),
   R('Day strip','天数进度条','—','9 px bars','—','gap 13 px',col(RED),'Four equal segments, track #1F2323 12%, radius 6 px, 69 px from the bottom and sides.','四段等宽，底色 #1F2323 12%，圆角 6 px，距底部和两侧 69 px。','间距 13 px'),
   R('Strip labels','进度条标签','Poppins SemiBold','19 px','600','+8% · uppercase',col(INK),'DAY 1 to DAY 4 under the bars; days not current at 45%.','DAY 1 到 DAY 4 放在进度条下方；非当前天为 45%。','+8% · 大写'),
-  R('Route by day','按天的路线','—','7.7 / 4.6 px','—','—',`${col(RED)} / ${col(INK,'35%')}`,'Today\'s route in red; earlier days in grey.','当天路线红色；之前几天灰色。')])}</div></div></section>`;
+  {g:['Motion','动效']},
+  R('Timing','时间','—','—','—','—','—','Each leg draws in 1.5 to 3 s, ease in and out. Each pin and its name fade in over 300 ms as the coach arrives and stay for the rest of the trip.','每段路线 1.5 至 3 秒画完，缓入缓出。大巴到达时，站点和名称 300 毫秒淡入，之后一直保留。')])}</div></div></section>`;
 
 function render(){
   document.documentElement.lang=LANG==='zh'?'zh':'en';document.body.dataset.lang=LANG;
@@ -242,8 +229,6 @@ function render(){
   document.getElementById('dnav').innerHTML=names.map((n,i)=>`<a href="#d${i}" data-i="${i}">${String(i).padStart(2,'0')} ${n}</a>`).join('');
   document.getElementById('deck').innerHTML=cover()+title()+caps()+subs()+atlas()+motion();
   initStages();
-  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting&&!e.target._seen){e.target._seen=1;go(e.target)}}),{threshold:.4});
-  document.querySelectorAll('.tCW').forEach(s=>io.observe(s));
   const so=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){const i=e.target.id.slice(1);document.querySelectorAll('#dnav a').forEach(a=>a.classList.toggle('on',a.dataset.i===i))}}),{threshold:.3});
   document.querySelectorAll('section.sl').forEach(s=>so.observe(s));
 }

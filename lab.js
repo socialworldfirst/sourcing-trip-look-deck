@@ -333,10 +333,17 @@ class LabMap{
     const seg=ROUTE.segs.find(s=>d<=s.start+s.len)||ROUTE.segs[ROUTE.segs.length-1];const day=DAYN[seg.to];
     const all=routeTo(ROUTE,d);let done=[],cur=[];ROUTE.segs.forEach(s=>{if(s.start>=d)return;const pp=routeTo({segs:[{...s,start:0}],tot:s.len},Math.min(s.len,d-s.start));(DAYN[s.to]===day?cur:done).push(pp)});
     done.forEach(pp=>this.strokeRoute(pp,c,{route:LT?'#1F2323':'#FFFFFF',rlw:2.4},u,.35));cur.forEach(pp=>this.strokeRoute(pp,c,{route:'#FF0051',rlw:4},u));
-    this.pins(c,S,u,OV,id=>STOPD[id]<=d+.01?1:0);this.labels(c,S,u,false);const hd=at(ROUTE,d);if(t<9.5){const p=this.X(c,hd.p);x.setTransform(1,0,0,1,0,0);this.bus(x,p[0],p[1],Math.cos(hd.ang)>=0?1:-1,u,LT?'#FF0051':'#FFFFFF',LT?'#FFFFFF':'#FF0051')}
+    if(LT){this.namedPins(c,u,d,t)}else{this.pins(c,S,u,OV,id=>STOPD[id]<=d+.01?1:0)}this.labels(c,S,u,false);const hd=at(ROUTE,d);if(t<9.5){const p=this.X(c,hd.p);x.setTransform(1,0,0,1,0,0);this.bus(x,p[0],p[1],Math.cos(hd.ang)>=0?1:-1,u,LT?'#FF0051':'#FFFFFF',LT?'#FFFFFF':'#FF0051')}
     const nstop=1+ROUTE.segs.filter(s=>s.start+s.len<=d+.01&&s.to!=='gz').length;
-    const q=k=>$(`[data-hud=${k}]`,this.st);if(q('day')){q('day').textContent='Day '+day;q('km').textContent=Math.round(d*1.113*1.3);q('stop').textContent=Math.min(11,nstop)}
+    const q=k=>$(`[data-hud=${k}]`,this.st);if(q('day'))q('day').textContent='Day '+day;if(q('km'))q('km').textContent=Math.round(d*1.113*1.3);if(q('stop'))q('stop').textContent=Math.min(11,nstop);
     [1,2,3,4].forEach(n=>{const segs=ROUTE.segs.filter(s=>DAYN[s.to]===n);const tot=segs.reduce((a,s)=>a+s.len,0);const got=segs.reduce((a,s)=>a+clamp(d-s.start,0,s.len),0);const el=$(`[data-dd="${n}"]`,this.st);if(el){$('u',el).style.width=(tot?got/tot*100:0)+'%';el.classList.toggle('on',n===day)}})}
+  namedPins(c,u,d,t){const x=this.ctx;x.setTransform(1,0,0,1,0,0);const seen=new Set();
+    OV.forEach(id=>{if(seen.has(id)||STOPD[id]>d+.01)return;seen.add(id);if(this.reach[id]==null)this.reach[id]=t;const a=clamp((t-this.reach[id])/.3);const L=PNAME[id];if(!L)return;
+      const p=this.X(c,[ST[id].x,ST[id].y]);const col=FACT.has(id)?'#FF0051':'#13002D';const lx=p[0]+L[2]*u,ly=p[1]+L[3]*u;const far=Math.hypot(L[2],L[3])>20;
+      x.globalAlpha=a;if(far){x.strokeStyle='rgba(31,35,35,.5)';x.lineWidth=1.2*u;x.beginPath();x.moveTo(p[0],p[1]);x.lineTo(lx-(L[2]>0?-2:2)*u,ly);x.stroke()}
+      x.textAlign=L[2]<0?'right':'left';x.textBaseline='alphabetic';x.fillStyle='#1F2323';x.font=`600 ${11.5*u}px Poppins`;x.fillText(L[0],lx,ly+1*u);
+      x.fillStyle='#484F56';x.font=`400 ${8*u}px Poppins`;x.fillText(L[1],lx,ly+11*u);
+      x.globalAlpha=1;const r=(id==='gz'?6.5:5.2)*u*(.6+.4*a);x.fillStyle=col;x.beginPath();x.arc(p[0],p[1],r,0,6.283);x.fill();x.strokeStyle='#FFFFFF';x.lineWidth=2*u;x.stroke()})}
   globe(t){const W=this.cv.width,H=this.cv.height,u=W/1000,x=this.ctx;x.setTransform(1,0,0,1,0,0);x.fillStyle='#13002D';x.fillRect(0,0,W,H);
     const cFlat={s:Math.min(W/PRDV[2],H/PRDV[3]),cx:PRDV[0],cy:PRDV[1]};const tgt=L2(PRDV[0],PRDV[1]);const R0=H*.42,R1=cFlat.s*100/D2R;
     const kr=ease(clamp((t-2.6)/1.6));const l0=lerp(126,tgt[0],kr),p0=lerp(2,tgt[1],kr);
@@ -360,6 +367,10 @@ class LabMap{
 const ROUTE_N=routeTo(ROUTE,ROUTE.tot).length;
 const FOLLOW=buildRoute(['gz','viomi','stelang']);const FOLB=[3672,3058,3746,3150];
 const PHOTO={viomi:['waterdrop',-1,-.25],stelang:['stelang_shelf',-1,.55],rongde:['tower',-.95,.45],weijin:['press',1,-.1],vision:['vision_line',.75,.75],centre1688:['centre_orange',-.85,-.7],fair:['crowd',.95,-.6]};
+const FACT=new Set(['viomi','stelang','rongde','weijin','vision']);
+const PNAME={gz:['Hotel','Tianhe, Guangzhou',30,-34],viomi:['Viomi','Water purifiers',-14,0],stelang:['Stelang','Coffee machines',-14,0],dinner1:['Welcome dinner','Guangzhou Restaurant',-40,4],
+ rongde:['Rongde','Kettles, lunch boxes',-14,8],weijin:['Weijin','Ovens, air fryers',14,-4],vision:['Vision','Baby appliances',14,8],dimsum:['Yum cha','Day 3 breakfast',-36,34],
+ centre1688:['1688 selection centre','Beauty and cosmetics',-30,-26],alibaba:['Alibaba Center','Workshop',34,30],fair:['Canton Fair','Pazhou',44,-6]};
 const DAYN={viomi:1,stelang:1,dinner1:1,rongde:2,weijin:2,vision:2,gz:2,dimsum:3,centre1688:3,alibaba:3,fair:4};
 const WORLD=MP.world.filter(r=>r.reduce((a,q)=>a+q[1],0)/r.length>-60);
 const CHN=MP.china.map(f=>f.p.filter((q,i)=>i%2===0).map(q=>L2(q[0],q[1])));
